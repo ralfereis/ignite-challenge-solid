@@ -1,0 +1,210 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Atlas",
+    "description": "This is documentation about the Atlas API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "ralfe-dev@outlook.com"}
+    },
+    "tags": [
+      {
+        "name": "users",
+        "description": "User's management",
+        "externalDocs": {
+          "description": "Find out more",
+          "url": "http://localhost:3333/api-docs"
+        }
+      }
+    ],
+    "paths": {
+      "/users" :{
+        "post": {
+          "tags": ["users"],
+          "summary": "Create a new user",
+          "description": "Creating a user",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"              
+                    },
+                    "name": {
+                      "type":"string"
+                    },
+                    "admin": {
+                      "type": "boolean"              
+                    },
+                    "created_at": {
+                      "type":"Date"
+                    },
+                    "updated_at": {
+                      "type":"Date"
+                    }
+                  },
+                  "example": {
+                    "name": "John Doe",
+                    "email": "johndoe@example.com"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "User created successfully"
+            },
+            "400": {
+              "description": "This e-mail is already in use"
+            }
+          }
+        },
+        "get": {
+          "tags": ["users"],
+          "summary": "List all user",
+          "description": "Listing all user",
+          "parameters": [{
+            "name": "user_id",
+            "in": "header",
+            "description": ".....",
+            "required": true
+        }],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content":{
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"              
+                        },
+                        "name": {
+                          "type":"string"
+                        },
+                        "admin": {
+                          "type": "boolean"              
+                        },
+                        "created_at": {
+                          "type":"Date"
+                        },
+                        "updated_at": {
+                          "type":"Date"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+          }
+
+        }
+      },
+      "/user/{user_id}": {
+        "get": {
+          "tags": ["users"],
+          "summary": "Returns a specific user",
+          "description": "Listing a specific user by user_id",
+          "parameters": [{
+            "name": "user_id",
+            "in": "params",
+            "description": ".....",
+            "required": true
+        }],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content":{
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"              
+                        },
+                        "name": {
+                          "type":"string"
+                        },
+                        "admin": {
+                          "type": "boolean"              
+                        },
+                        "created_at": {
+                          "type":"Date"
+                        },
+                        "updated_at": {
+                          "type":"Date"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+          }
+
+        }
+      },
+      "/user/{user_id}/admin": {
+        "patch": {
+          "tags": ["users"],
+          "summary": "Make a user an administrator",
+          "description": "Changing a user in an administrator",
+          "parameters": [{
+            "name": "user_id",
+            "in": "params",
+            "description": ".....",
+            "required": true
+        }],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content":{
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"              
+                        },
+                        "name": {
+                          "type":"string"
+                        },
+                        "admin": {
+                          "type": "boolean"              
+                        },
+                        "created_at": {
+                          "type":"Date"
+                        },
+                        "updated_at": {
+                          "type":"Date"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+          }
+
+        }
+      }
+    }
+  }
+            
+            
+            
+            
